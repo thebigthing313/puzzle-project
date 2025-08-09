@@ -24,7 +24,7 @@ create table "public"."crosswords" (
 create table "public"."crossword_solutions" (
     "id" uuid not null primary key default gen_random_uuid(),
     "crossword_id" uuid not null references public.crosswords(id) on delete cascade,
-    "solution" jsonb not null default '{}'::jsonb
+    "solution" jsonb not null default '{}'::jsonb,
     "is_primary" boolean not null default false,
     "created_at" timestamp with time zone not null default now(),
     "updated_at" timestamp with time zone default now()
