@@ -1,11 +1,10 @@
+import { useCrossword } from "./crossword-provider";
 import CrosswordSquare from "./crossword-square";
 
-type CrosswordGridProps = {
-  rows: number;
-  columns: number;
-};
+export default function CrosswordGrid() {
+  const { crossword } = useCrossword();
+  const { rows, columns, grid } = crossword;
 
-export default function CrosswordGrid({ rows, columns }: CrosswordGridProps) {
   return (
     <div className="size-fit border border-black">
       {Array.from({ length: rows }).map((_, rowIndex) => (

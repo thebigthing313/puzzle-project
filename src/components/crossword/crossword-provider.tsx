@@ -4,8 +4,11 @@ import { useState, createContext, useContext, type ReactNode } from "react";
 const defaultCrossword: Crossword = {
   rows: 15,
   columns: 15,
-  gridValues: Array.from({ length: 15 }, () => Array(15).fill(null)),
-  gridNumbers: Array.from({ length: 15 }, () => Array(15).fill(null)),
+  title: "Default Crossword",
+  description: "Test Crossword for Development",
+  acrossEntries: null,
+  downEntries: null,
+  grid: null,
 };
 
 type CrosswordContextType = {
