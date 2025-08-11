@@ -1,19 +1,17 @@
 import { useCrossword } from "./crossword-provider";
-import CrosswordSquare from "./crossword-square";
+import CrosswordRow from "./crossword-row";
 
 export default function CrosswordGrid() {
   const { crossword } = useCrossword();
-  const { rows, columns, grid } = crossword;
+  const { grid } = crossword;
 
-  return (
-    <div className="size-fit border border-black">
-      {Array.from({ length: rows }).map((_, rowIndex) => (
-        <div key={rowIndex} className="flex">
-          {Array.from({ length: columns }).map((_, colIndex) => (
-            <CrosswordSquare key={colIndex} />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  if (grid) {
+    return (
+      <div className="size-fit border border-black">
+        {grid.map((row) => (
+          <CrosswordRow index={row.index} key={`row-${row.index}`} />
+        ))}
+      </div>
+    );
+  }
 }
