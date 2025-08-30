@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@confuzzle/puz-crossword':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.1.9)(react@19.1.1)
@@ -173,6 +176,18 @@ packages:
   '@babel/types@7.28.2':
     resolution: {integrity: sha512-ruv7Ae4J5dUYULmeXw1gmb7rYRz57OWCPM57pHojnLq/3Z1CK2lNSLTCVjxVk1F/TZHwOZZrOWi0ur95BbLxNQ==}
     engines: {node: '>=6.9.0'}
+
+  '@confuzzle/puz-common@1.2.3':
+    resolution: {integrity: sha512-jLnaVanNYiLe068KDsqxuDeVVzRrTtuo85IPzIvoCfH0WJjwbxTe4yF/YAN5yAyEHieMwgLF3ADk0J94zoj9cw==}
+
+  '@confuzzle/puz-crossword@1.2.3':
+    resolution: {integrity: sha512-tsfQvVe/7HaJtFTGrp1AG9MImMlacsxptzF2aE4KDZcCuungxA8kSh5Pv+eJN9rwPf0Ep8ukl9Ulzs030GfDbw==}
+
+  '@confuzzle/readpuz@1.2.3':
+    resolution: {integrity: sha512-IWS8g02YPuKvd5ncBqWT5aHkAURzcTttaZ/OLKD/Yux58H8Oxi5Dcjy/lBhXCV9FF+35mqkF+dItfCvdIlro8A==}
+
+  '@confuzzle/writepuz@1.2.3':
+    resolution: {integrity: sha512-DV76qrOy7bV7o1m8LVdudw5x2yuKx7XGfAczX6RwBfLSa2D+dYI201lecWECHAMiq//2zVYPPU8U9DhLs+K/0g==}
 
   '@esbuild/aix-ppc64@0.25.8':
     resolution: {integrity: sha512-urAvrUedIqEiFR3FYSLTWQgLu5tb+m0qZw0NBEasUeo6wuqatkMDaRT+1uABiGXEu5vqgPd7FGE1BhsAIy9QVA==}
@@ -976,6 +991,10 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
+  iconv-lite@0.5.2:
+    resolution: {integrity: sha512-kERHXvpSaB4aU3eANwidg79K8FlrN77m8G9V+0vOR3HYaRifrlwMEpT7ZBJqLSEIHnEgJTHcWK82wwLwwKwtag==}
+    engines: {node: '>=0.10.0'}
+
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -1254,6 +1273,9 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
+  safer-buffer@2.1.2:
+    resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+
   scheduler@0.26.0:
     resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
@@ -1528,6 +1550,27 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
+
+  '@confuzzle/puz-common@1.2.3':
+    dependencies:
+      iconv-lite: 0.5.2
+
+  '@confuzzle/puz-crossword@1.2.3':
+    dependencies:
+      '@confuzzle/puz-common': 1.2.3
+      '@confuzzle/readpuz': 1.2.3
+      '@confuzzle/writepuz': 1.2.3
+      iconv-lite: 0.5.2
+
+  '@confuzzle/readpuz@1.2.3':
+    dependencies:
+      '@confuzzle/puz-common': 1.2.3
+      iconv-lite: 0.5.2
+
+  '@confuzzle/writepuz@1.2.3':
+    dependencies:
+      '@confuzzle/puz-common': 1.2.3
+      iconv-lite: 0.5.2
 
   '@esbuild/aix-ppc64@0.25.8':
     optional: true
@@ -2254,6 +2297,10 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  iconv-lite@0.5.2:
+    dependencies:
+      safer-buffer: 2.1.2
+
   ignore@5.3.2: {}
 
   ignore@7.0.5: {}
@@ -2485,6 +2532,8 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  safer-buffer@2.1.2: {}
 
   scheduler@0.26.0: {}
 

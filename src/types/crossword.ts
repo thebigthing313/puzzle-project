@@ -11,6 +11,8 @@ export type Row = {
 
 export type Entry = {
   number: number;
+  row: number;
+  column: number;
   word: string | null;
   clue: string | null;
 };
