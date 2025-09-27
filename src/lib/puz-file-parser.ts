@@ -19,7 +19,8 @@ export async function parsePuzFile(file: File): Promise<Crossword | null> {
   let puzGrid: Row[] | null = [];
   let acrossEntries: Entry[] | null = [];
   let downEntries: Entry[] | null = [];
-  const PuzCrossword = require("@confuzzle/puz-crossword").PuzCrossword;
+  const mod: any = await import("@confuzzle/puz-crossword");
+  const PuzCrossword = mod.PuzCrossword;
   const fs = require("fs");
 
   const cw = await PuzCrossword.from(fs.readFileSync(file));

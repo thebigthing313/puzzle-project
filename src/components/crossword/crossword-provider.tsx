@@ -1,5 +1,12 @@
 import type { Crossword } from "@/types/crossword";
-import { useState, createContext, useContext, type ReactNode } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  type ReactNode,
+  useEffect,
+} from "react";
+import { parsePuzFile } from "@/lib/puz-file-parser";
 
 const defaultCrossword: Crossword = {
   rows: 15,
@@ -35,6 +42,18 @@ type Props = {
 export function CrosswordProvider({ children }: Props) {
   const [crossword, setCrossword] = useState<Crossword>(defaultCrossword);
 
+  useEffect(() => {
+    async function loadDefaultCrossword() {
+      const response = await fetch("/test.puz");
+      const blob = await response.blob();
+      const file = new File([blob], "test.puz");
+      const parsed = await parsePuzFile(file);
+      if (parsed) {
+        setCrossword(parsed);
+      }
+    }
+    loadDefaultCrossword();
+  }, []);
   return (
     <CrosswordContext.Provider value={{ crossword, setCrossword }}>
       {children}
